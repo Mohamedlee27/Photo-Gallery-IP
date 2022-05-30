@@ -57,16 +57,16 @@ class Photo(models.Model):
         return photo
 
     @classmethod
-    def search_by_location(cls, location_term):
-        photos = cls.objects.filter(location__location=location_term)
+    def search_by_location(cls, search_term):
+        photos = cls.objects.filter(location__location=search_term)
 
         return photos
 
 
     @classmethod
-    def search_by_category(cls, category_term):
+    def search_by_category(cls, search_term):
 
-        photos = cls.objects.filter(category__category=category_term)
+        photos = cls.objects.filter(category__category=search_term)
 
         return photos
 
