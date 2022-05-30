@@ -1,6 +1,40 @@
 from email.mime import image
 from django.db import models
-import datetime as dt
+from cloudinary.models import CloudinaryField
+
+
+class Location(models.Model):
+    location = models.CharField(max_length=30,null=True)
+
+    def __str__(self):
+        return self.location
+
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        Location.objects.filter(location=self).delete()
+
+    def update_location(self):
+        Location.objects.filter(location=self).update(location=self.location)
+
+class Category(models.Model):
+    category = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.category
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        Category.objects.filter(category=self).delete()
+
+    def update_category(self):
+        Category.objects.filter(category=self).update(category=self.category)
+
+
+
 
 class Photo(models.Model):
     image = CloudinaryField('image')
@@ -47,6 +81,12 @@ class Photo(models.Model):
 
     def delete_image(self):
         Photo.objects.filter(id=self).delete()
+
+
+
+
+
+
 
 
 
