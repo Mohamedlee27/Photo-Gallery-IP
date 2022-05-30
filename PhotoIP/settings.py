@@ -39,7 +39,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'PhotoIP',
+    'Photoapp',
     'bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'PhotoIP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'photo',
+        'NAME': 'gallery',
         'USER': 'postgres',
-    'PASSWORD':'lee123',
+        'PASSWORD':'lee123',
     }
 }
 
