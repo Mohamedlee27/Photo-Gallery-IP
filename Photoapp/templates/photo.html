@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content %}
+
+<div class="container">
+
+
+        <img src="{{photo.image.url}}" class="img-responsive" alt="...">
+        image title: {{photo.title}}
+    Category: {{photo.category}}
+    description: {{photo.description}}
+    Location: {{photo.location}}
+
+
+         Posted {{photo.published}}
+        <button class="btn btn-info" type="button" onclick="getURL();">Get URL</button>
+
+            <a id="url">
+            </a>
+
+        <button type="button" class="btn btn-outline-info" id="urlbtn" onclick="copyToClipboard('#url')"></button>
+
+
+
+</div>
+
+{%endblock %}
