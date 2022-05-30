@@ -19,9 +19,9 @@ import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 cloudinary.config( 
-  cloud_name = "YOUR_CLOUD_NAME", 
-  api_key = "YOUR_API_KEY", 
-  api_secret = "YOUR_API_SECRET" 
+  cloud_name = "donvmrvt5", 
+  api_key = "132917799451119", 
+  api_secret = "08o-KrtmnK4XBWOoHFer-fIFL_Q" 
 )
 
 # Quick-start development settings - unsuitable for production
@@ -40,13 +40,13 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Photoapp',
-    'bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap5',
     'cloudinary',
     'columns',
 ]
