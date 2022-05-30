@@ -1,0 +1,54 @@
+{%extends 'base.html'%}
+{%load static%}
+{%load columns%}
+{%block content%}
+
+
+
+<div class="container">
+
+        {%if photos%}
+
+          Found {{photos|length}} results for '{{message}}'
+
+          {%else%}
+
+
+            Found 0 results for '{{message}}'
+
+
+        {%endif%}
+
+    <div class="row">
+        {%if photos%}
+
+            {%for col in photos|columns:3%}
+            <div class="col-md-4 col-md-4 col-md-4 col-md-4">
+                {%for photo in col%}
+              {{photo.title}}
+                Category: {{photo.category}}
+                        <img src="{{photo.image.url}}" class="img-responsive modal-target" alt="{{photo.description}}" id="Img 1">
+
+                            {{photo.published}}
+
+
+                                <a href="{% url 'photo' photo.id %}">
+                                    Photo Details
+                                </a>
+
+
+
+
+                <div id="modal" class="modal">
+                    <span id="modal-close" class="modal-close">&times;</span>
+                    <img id="modal-content" class="modal-content">
+                    <div id="modal-caption" class="modal-caption"></div>
+                </div>
+                {%endfor%}
+            </div>
+            {%endfor%}
+        {%endif%}
+    </div>
+
+</div>
+{%endblock%}
