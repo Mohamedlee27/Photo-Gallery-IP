@@ -1,0 +1,103 @@
+{%load bootstrap5%}
+{%load static%}
+{%load columns%}
+
+
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    {%if title%}
+    <title>
+        Photo - {{title}}
+    </title>
+    {%else%}
+    <title>
+        Photo
+    </title>
+    {%endif%}
+
+    {%block styles%}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        {%bootstrap_css%}
+        <link rel="stylesheet" href="{%static 'css/base.css'%}">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+    {%endblock%}
+
+
+
+
+
+    <style>
+
+</style>
+
+
+</head>
+
+<body>
+{%include 'navbar.html'%}
+{%block content%}
+
+<h1 class="text-center">
+    Photo 
+</h1>
+
+{%endblock%}
+
+{%block scripts%}
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script src="{%static 'js/basegallery.js'%}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    {%bootstrap_javascript%}
+<script>
+function getURL() {
+document.getElementById("url").innerHTML = window.location.href;
+document.getElementById("urlbtn").innerHTML = "Copy";
+}
+
+
+
+
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+
+}
+
+
+
+
+var modal = document.getElementById('modal');
+
+var modalClose = document.getElementById('modal-close');
+modalClose.addEventListener('click', function() {
+  modal.style.display = "none";
+});
+
+
+document.addEventListener('click', function (e) {
+  if (e.target.className.indexOf('modal-target') !== -1) {
+      var img = e.target;
+      var modalImg = document.getElementById("modal-content");
+      var captionText = document.getElementById("modal-caption");
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      captionText.innerHTML = img.alt;
+   }
+});
+
+
+  </script>
+{%endblock%}
+
+</body>
+</html>
