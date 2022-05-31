@@ -1,5 +1,61 @@
 {%extends 'base.html'%}
+{%load columns%}
+{%load bootstrap5%}
+{%load static%}
+
 
 {% block content %}
 {{block.super}}
+
+
+<div class="container">
+    <div class="row">
+    {%for col in photos|columns:3%}
+
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {%for photo in col%}
+
+
+                Image title: {{photo.title}}
+            Category: {{photo.category}}
+
+                    <img src="{{photo.image.url}}" class="img-responsivemodal-target" alt="{{photo.description}}" id="Img 1">
+                    <div id="modal" class="modal">
+                        <span id="modal-close" class="modal-close">&times;</span>
+                        <img id="modal-content" class="modal-content">
+                        <div id="modal-caption" class="modal-caption"></div>
+                    </div>
+
+                        Date/time published: {{photo.published}}
+
+                            <a href="{% url 'photo' photo.id %}">
+                                   Photo Details
+                            </a>
+
+
+
+
+        </div>
+
+
+            {%empty%}
+            <h2 class="text-center">
+                Images not found
+            </h2>
+            {%endfor%}
+
+
+    </div>
+
+
+    {%endfor%}
+
+
+
+</div>
+
+
+
+
+
 {% endblock %}
