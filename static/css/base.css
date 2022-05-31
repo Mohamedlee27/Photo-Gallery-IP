@@ -1,3 +1,8 @@
+body{
+  background:url(/static/aqua.jpg);
+  width:fit-content;
+  background-size: cover;
+}
 .modal-target {
     width: 75%;
     border-radius: 5px;

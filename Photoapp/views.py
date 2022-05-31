@@ -8,7 +8,7 @@ def photo(request,photo_id):
     try:
         photo = Photo.objects.get(id=photo_id)
 
-    except DoesNotExist:
+    except Photo.DoesNotExist:
         raise Http404()
 
     return render(request,'photo.html',{"photo":photo})
@@ -36,8 +36,8 @@ def location_results(request):
 
 def category_results(request):
 
-    if 'photo' in request.GET and request.GET["photo"]:
-        search_term = request.GET.get("photo")
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
         searched_photos = Photo.search_by_category(search_term)
 
         message = f"{search_term}"

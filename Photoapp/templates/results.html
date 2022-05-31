@@ -3,10 +3,8 @@
 {%load columns%}
 {%block content%}
 
-
-
 <div class="container">
-
+<div style="text-align: center; font-size:40px;">
         {%if photos%}
 
           Found {{photos|length}} results for '{{message}}'
@@ -19,36 +17,48 @@
 
         {%endif%}
 
-    <div class="row">
-        {%if photos%}
-
-            {%for col in photos|columns:3%}
-            <div class="col-md-4 col-md-4 col-md-4 col-md-4">
-                {%for photo in col%}
-              {{photo.title}}
-                Category: {{photo.category}}
-                        <img src="{{photo.image.url}}" class="img-responsive modal-target" alt="{{photo.description}}" id="Img 1">
-
-                            {{photo.published}}
-
-
-                                <a href="{% url 'photo' photo.id %}">
-                                    Photo Details
-                                </a>
-
-
-
-
-                <div id="modal" class="modal">
-                    <span id="modal-close" class="modal-close">&times;</span>
-                    <img id="modal-content" class="modal-content">
-                    <div id="modal-caption" class="modal-caption"></div>
-                </div>
-                {%endfor%}
-            </div>
-            {%endfor%}
-        {%endif%}
-    </div>
-
 </div>
+        
+        <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    {%for photo in photos%}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{photo.image.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{photo.title}}</h5>
+                    
+                          <p class="card-text" style="font-size:30px;">{{photo.description}}</p>
+                          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                        <div class="card-footer" style="font-size:20px;">
+                            <a href="{% url 'photo' photo.id %}">
+                                Photo Details
+                         </a>
+                        </div>
+                        </div>
+        
+                                    
+                                
+        
+        
+        
+        
+                
+        
+        
+                    {%empty%}
+                    <h2 class="text-center">
+                        Images not found
+                    </h2>
+                    {%endfor%}
+        
+        
+            </div>
+        
+        
+        
+        </div>
+        
+        
+        </div>
 {%endblock%}

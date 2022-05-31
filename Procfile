@@ -1,0 +1,1 @@
+web: gunicorn PhotoIP.wsgi --log-file -
